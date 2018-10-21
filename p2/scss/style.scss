@@ -1,0 +1,435 @@
+/* The version of Bourbon used in this Pen was 4.* */
+@import "bourbon";
+$primary-color: rgba(#193441, 0.75);
+$secondary-color: #91AA9D;
+$highlight-color: #FFD34E;
+$error-color: salmon;
+$success-color: #10B663;
+$bg-color: #F2F1ED;
+$form-bg-color: lighten($bg-color, 4%);
+$label-distance: 2.2em;
+$default-duration: 0.25s;
+$default-ease: $ease-out-back;
+
+/* MIXINS */
+
+// animate button border
+@mixin rdui-animate-btn-border ( $include-symbol: true, $symbol: '\f1d9', $color: $secondary-color, $line-color: $primary-color, $color-hover: $primary-color, $bgcolor: $form-bg-color, $bgcolor-hover: $form-bg-color, $border-size: 1px) {
+  position: relative;
+  display: inline-block;
+  font-size: 1em;
+  text-transform: uppercase;
+  padding: 20px 35px;
+  outline: none;
+  cursor: pointer;
+  color: $color;
+  background: $bgcolor;
+  border: none;
+  @include transition(all $default-duration $ease-in-out-quart);
+  & ~ .rdui-line {
+    position: absolute;
+    background: $line-color;
+    box-sizing: content-box;
+    @include transition(all $default-duration $ease-in-out-quart);
+    &.rdui-line--top {
+      top: -$border-size;
+      left: -$border-size;
+      height: $border-size;
+      width: 0;
+    }
+    &.rdui-line--bottom {
+      bottom: -$border-size;
+      right: -$border-size;
+      height: $border-size;
+      width: 0;
+    }
+    &.rdui-line--left {
+      bottom: -$border-size;
+      left: -$border-size;
+      height: 0;
+      width: $border-size;
+    }
+    &.rdui-line--right {
+      top: -$border-size;
+      right: -$border-size;
+      height: 0;
+      width: $border-size;
+    }
+  }
+  // include fa icon if true
+  @if $include-symbol==true {
+    &:before {
+      content: $symbol;
+      font-family: FontAwesome;
+      color: $color;
+      display: inline-block;
+      margin-right: 10px;
+      margin-left: -8px;
+      @include transition(all $default-duration $ease-in-out-quart);
+    }
+  }
+  &:focus + label,
+  &:hover,
+  &:focus {
+    color: $color-hover;
+    background: $bgcolor-hover;
+    & ~ .rdui-line--top {
+      width: 100%;
+      padding-right: $border-size;
+    }
+    & ~ .rdui-line--bottom {
+      width: 100%;
+      padding-right: $border-size;
+    }
+    & ~ .rdui-line--left {
+      height: 100%;
+      padding-top: $border-size;
+    }
+    & ~ .rdui-line--right {
+      height: 100%;
+      padding-top: $border-size;
+    }
+    &:before {
+      color: $color-hover;
+      @include transform(translateX(3px));
+    }
+  }
+}
+
+// animate input bottom border
+@mixin rdui-animate-input-border ( $line-color: $primary-color, $border-size: 1px) {
+  & input ~ .rdui-line,
+  & textarea ~ .rdui-line {
+    position: absolute;
+    background: $line-color;
+    box-sizing: border-box;
+    &.rdui-line--bottom {
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: 0;
+      height: $border-size;
+      @include transition(width 0.35s $ease-in-out-quart);
+    }
+  }
+  & textarea ~ .rdui-line {
+    &.rdui-line--bottom {
+      bottom: 3px;
+    }
+  }
+  & input:focus ~ .rdui-line--bottom,
+  & textarea:focus ~ .rdui-line--bottom {
+    width: 100%;
+  }
+}
+
+
+/* BASE STYLES */
+
+body * {
+  box-sizing: border-box;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  color: $primary-color;
+  background: $bg-color;
+  font-family: 'Roboto', Arial, "Helvetica Neue", Helvetica, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2em;
+}
+
+form {
+  margin: 0 20px;
+}
+
+legend {
+  font-family: 'Roboto Slab';
+  font-size: 1.4em;
+  font-weight: 300;
+  width: 100%;
+  text-align: center;
+  margin: 3em 0 2em;
+}
+
+label {
+  display: block;
+  text-transform: uppercase;
+  margin-top: 1px;
+}
+
+
+/* TEXTFIELDS */
+
+.rdui-textfield,
+.rdui-formfield {
+  display: block;
+  margin-bottom: 3em;
+  position: relative;
+}
+
+.rdui-formfield {
+  display: inline-block;
+}
+
+.rdui-textfield--float-label label {
+  position: absolute;
+  top: 0;
+  line-height: 3em;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+  @include size(100%);
+}
+
+.rdui-textfield--float-label {
+  &.rdui-textfield--empty label,
+  label {
+    @include animation(labelDown $default-duration forwards $default-ease);
+    @include transform(translate(0, $label-distance));
+    @include transition(all $default-duration);
+    font-size: 1em;
+    color: $secondary-color;
+    text-overflow: clip;
+    cursor: text;
+    pointer-events: none;
+  }
+  &.rdui-textfield--full label {
+    @include animation(labelUp $default-duration forwards $default-ease);
+    @include transform-origin(0 bottom);
+    color: $primary-color;
+    font-size: 0.8em;
+  }
+  .rdui-icon {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    &:before,
+    &:after {
+      font-family: FontAwesome;
+      display: inline-block;
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      font-size: 1.8em;
+      line-height: 1.7em;
+      height: 100%;
+      opacity: 0;
+      color: $primary-color;
+      @include transform(scale(0.5, 1));
+    }
+    &:before {
+      left: -0.25em;
+      @include transform-origin(right center);
+      @include transition(all $default-duration*1.5 $default-duration/4 $default-ease);
+    }
+    &:after {
+      content: '\f00c';
+      right: -0.25em;
+      font-size: 1em;
+      line-height: 3em;
+      color: $success-color;
+      @include transform-origin(left center);
+      @include transition(all $default-duration*1.5 $default-duration/4 $default-ease);
+    }
+    &.rdui-icon--name:before {
+      content: '\f2c0';
+    }
+    &.rdui-icon--email:before {
+      content: '\f003';
+    }
+    &.rdui-icon--message:before {
+      content: '\f27b';
+    }
+  }
+  input,
+  textarea {
+    font-size: 1em;
+    line-height: 3em;
+    width: 100%;
+    padding-left: 1em;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid lighten($secondary-color, 25%);
+    background: $form-bg-color;
+    @include transition(background $default-duration*2 ease);
+    &:focus {
+      background: lighten($bg-color, 4%);
+      & ~ .rdui-icon:before {
+        opacity: 0.8;
+        left: -1.4em;
+        @include transform(scale(1, 1));
+      }
+    }
+    &:focus + label {
+      @include animation(labelUp $default-duration forwards $default-ease);
+      @include transform-origin(0 bottom);
+      color: $primary-color;
+      font-size: 0.8em;
+    }
+    &:valid {
+      & ~ .rdui-icon:after {
+        color: $success-color;
+        opacity: 1;
+        right: -1.4em;
+        @include transform(scale(1, 1));
+      }
+    }
+  }
+}
+
+.rdui-textfield--full input[type='email']:invalid,
+.rdui-textfield--empty.rdui-textfield--dirty input:required,
+.rdui-textfield--empty.rdui-textfield--dirty textarea:required {
+  border-bottom: 1px solid $error-color;
+  & ~ .rdui-icon:after {
+    content: '\f12a';
+    color: $error-color;
+    opacity: 1;
+    right: -1.4em;
+    @include transform(scale(1, 1));
+  }
+}
+
+.rdui-textfield--animate-border {
+  @include rdui-animate-input-border();
+}
+
+
+
+/* FILE INPUT */
+
+
+
+.rdui-file-input--animate-border,
+.rdui-file-input--animate-border + label {
+  @include rdui-animate-btn-border(true, '\f093');
+}
+
+.rdui-file-input {
+  // hide default btn style
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+
+
+/* BUTTONS */
+
+
+
+.rdui-btn--animate-border {
+  @include rdui-animate-btn-border(true, '\f1d9');
+}
+
+.rdui-btn--animate-pending {
+  & ~ .rdui-line--top {
+    // @include animation(btn-pending-top $default-duration*4 infinite $ease-in-out-quart);
+  }
+}
+
+
+
+/* KEYFRAMES */
+
+
+
+// button pending submit animation
+@include keyframes(btn-pending-top) {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 0;
+    left: 100%;
+  }
+}
+
+// label up animation
+@include keyframes(labelUp) {
+  0% {
+    @include transform( translate(0, 0));
+    padding-left: 15px;
+  }
+  100% {
+    @include transform( translate(0, -$label-distance));
+    padding-left: 0;
+  }
+}
+
+// label down animation
+@include keyframes(labelDown) {
+  0% {
+    @include transform( translate(0, -$label-distance));
+    padding-left: 0;
+  }
+  100% {
+    @include transform( translate(0, 0));
+    padding-left: 15px;
+  }
+}
+
+
+
+/* HEADER */
+
+
+
+header {
+  width: 100%;
+  
+  &:before, &:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    width: 30%;
+    height: 1px;
+    background: $primary-color;
+    opacity: 0.25;
+  }
+  
+  &:before {
+    left: 1.5em;
+  }
+  
+  &:after {
+    right: 1.5em;
+  }
+}
+
+header a {
+  @include size(50px);
+  display: block;
+  z-index: 1;
+  opacity: 0.7;
+  margin: 0 auto 3em;
+  background: $bg-color url('http://rydaly.com/assets/images/rd-small.png');
+  background-repeat: no-repeat;
+  background-size: 50px;
+  cursor: pointer;
+  @include transform(scale(1));
+  @include transition(all 0.3s $ease-out-sine);
+  
+  &:hover {
+    @include transform(scale(1));
+    opacity: 0.9;
+  }
+}
