@@ -82,7 +82,7 @@ else{
 <div style="background: black; margin-top: 0px;">
     <center>
     <a class="button standout" href="prev.php" style="background: black; color:white;font-size: 18px;border-radius: 25px;border:1px solid #c9d9e9; height:50px;padding-top: 13px;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Adjust Image</a>
-         <a class="button standout" href="update2.php?row_id=<?php echo $w_id; ?>" style="background: black; color:white;font-size: 18px;border-radius: 25px;border:1px solid #c9d9e9; height:50px;padding-top: 13px; margin-left: 15px;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Edit Invyt</a>
+         <a class="button standout" href="update2.php?row_id=<?php echo $w_id; ?>" style="background: black; color:white;font-size: 18px;border-radius: 25px;border:1px solid #c9d9e9; height:50px;padding-top: 13px; margin-left: 15px;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Edit Form</a>
          <form class="button standout" style="background: black; color:white;" method="post" action="subm.php" >
          <input type="hidden" id="custId" name="row_id" value="<?php echo $w_id; ?>">
          <input type="hidden"  name="subd" value="<?php echo $i_url; ?>">
@@ -112,9 +112,28 @@ function myFunction() {
    // Start the buffering //
 ob_start();
 ?>
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 <script type="text/javascript">
+function rate()
+{
+
+   $.ajax({
+      url: 'https://invyt.in/cnt.php',
+      type: 'post',
+      data: 'wid='+<?php echo $w_id; ?>,
+      success: function(output) 
+      {
+        //  alert('success, server says '+output);
+      }, error: function()
+      {
+         // alert('something went wrong, rating failed');
+      }
+   });
+
+}
+
+window.onload = rate();
 function GetLatlong()
     {
       
@@ -146,10 +165,13 @@ function GetLatlong()
     window.onload =GetLatlong;
 
 </script>
-
- <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB20374kXcE33T2Sz3X4BveYjgkhE5bUHM&callback=initMap">
-    </script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-2603374620973706",
+    enable_page_level_ads: true
+  });
+</script>
   <head>
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
@@ -179,6 +201,9 @@ function GetLatlong()
     <!-- main style --> 
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script src="js/vendor/modernizr-2.6.2.min.js"></script>
     <?php
 
      $lap="0:0";
@@ -245,7 +270,11 @@ else{
 
   </head>
   <body>
-
+    <div id="loader-wrapper">
+			<div id="invytpreloaderresponsive_hype_container" style="margin:auto;position:relative;width:100%;height:100%;overflow:hidden;">
+		<script type="text/javascript" charset="utf-8" src="invyt%20preloader_responsive.hyperesources/invytpreloaderresponsive_hype_generated_script.js?750"></script>
+	</div>
+		</div>
     <h1 class="show-for-sr"><?php echo $g_name; ?> & <?php echo $b_name; ?> Wedding Party Invitation</h1>
     <!-- sticky navbar -->
     <div data-sticky-container>
@@ -406,6 +435,17 @@ else{
         <!-- Blogpost -->
         <section id="events" class="row blog-container">
           <div class="column body">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- First ad -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2603374620973706"
+     data-ad-slot="9883827440"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
             <h2 class="text-center main-heading">Venue</h2>
             <h5 class="quote text-center">Come celebrate the joy of our union! Hope you will be able to make it! </h5>
             <div class="blog">
@@ -433,6 +473,17 @@ else{
                   </div>
                   <p>Solicit your esteemed presence with family to grace the auspicious occasion of the marriage with your presence and bless the wedded couple.</p>
                 </div>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- First ad -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2603374620973706"
+     data-ad-slot="9883827440"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
               </div>
               <!-- end eachpost 2 start -->
               <!-- eachpost 3 start -->
@@ -900,10 +951,14 @@ else{
     </div><!-- END div off-canvas wrapper -->
     
     <!--js files-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+	<script src="js/main.js"></script>
+	
     <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="scripts/vendor/what-input.js"></script>
     <script type="text/javascript" src="scripts/vendor/foundation.js"></script>
-    <script async type="text/javascript" src="scripts/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="scripts/owl.carousel.min.js"></script>
     <script type="text/javascript" src="scripts/jquery.countdown.min.js"></script>
     <script type="text/javascript" src="scripts/lightbox.min.js"></script>
     <script type="text/javascript" src="scripts/skrollr.min.js"></script>

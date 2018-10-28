@@ -396,7 +396,7 @@ vertical-align: middle;
   
   	<div class="header__menu">
     	<div class="site__box-link" style="float:right;">
-		<button class="btn btn--purple btn--width" onclick="myFunction()" style="background: #ffffff; color: #535252;"><i class="fa fa-arrow-left" ></i> Edit Form</button>
+		<button class="btn btn--purple btn--width" onclick="myFunction()" style="background: #ffffff; color: #535252;"><i class="fa fa-arrow-left" ></i> Back</button>
         </div>
   	</div>
 	</div>

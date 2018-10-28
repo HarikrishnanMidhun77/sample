@@ -3,6 +3,7 @@
 
 <?php
 include '../config.php';
+header('Access-Control-Allow-Origin: *'); 
 
 $con = mysqli_connect($host, $user, $password,$dbname);
 session_start();
@@ -24,7 +25,7 @@ if (!$con) {
    }
    else{
     //session_start();
-    $det = mysqli_query($con,"SELECT * FROM invyt_form_org WHERE w_id=(select max(w_id) from invyt_form_org where c_id='".$usr."')");
+    $det = mysqli_query($con,"SELECT * FROM invyt_form_org WHERE w_id=".$_GET['wid']);
     
 	while($row = mysqli_fetch_array($det)) {
   
@@ -67,12 +68,12 @@ if (!$con) {
     //$d=mysqli_query($con,"SELECT DATE_FORMAT(muhoo_1, '%k:%i') FROM invyt_form WHERE w_id=(select max(w_id) from invyt_form)");
     //$row2 = mysqli_fetch_array($d);
     // $m1=$row2["muhoo_1"];
-  }
-    $myDateTime = DateTime::createFromFormat('Y-m-d', $w_date);
+ }
+ $myDateTime = DateTime::createFromFormat('Y-m-d', $w_date);
 $formattedweddingdate = $myDateTime->format('d-M-Y');
  
  
- 
+
 $_SESSION['wid']=$w_id;
 if(!(isset($_SESSION['suc']))){
   $_SESSION['suc']=0;
@@ -100,7 +101,7 @@ else{
     <center>
     <a class="button standout" href="p2_prev.php" style="background: black; color:white;font-size: 18px;border-radius: 25px;border:1px solid #c9d9e9; height:50px;padding-top: 13px;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Adjust Image</a>
     <a class="button standout" href="p2_gal.php" style="background: black; color:white;font-size: 18px;border-radius: 25px;border:1px solid #c9d9e9; height:50px;padding-top: 13px;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Edit Gallery</a>
-         <a class="button standout" href="p2_update2.php?row_id=<?php echo $w_id; ?>" style="background: black; color:white;font-size: 18px;border-radius: 25px;border:1px solid #c9d9e9; height:50px;padding-top: 13px; margin-left: 15px;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Edit Invyt</a>
+         <a class="button standout" href="p2_update2.php?row_id=<?php echo $w_id; ?>" style="background: black; color:white;font-size: 18px;border-radius: 25px;border:1px solid #c9d9e9; height:50px;padding-top: 13px; margin-left: 15px;"><i class="fa fa-arrow-left" aria-hidden="true"></i> Edit form</a>
          <form class="button standout" style="background: black; color:white;" method="post" action="p2_subm.php" >
          <input type="hidden" id="custId" name="row_id" value="<?php echo $w_id; ?>">
          <input type="hidden"  name="subd" value="<?php echo $i_url; ?>">
@@ -131,8 +132,10 @@ function myFunction() {
 ob_start();
 ?>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript">
+
+
 function GetLatlong()
     {
       
@@ -165,9 +168,6 @@ function GetLatlong()
 
 </script>
 
- <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB20374kXcE33T2Sz3X4BveYjgkhE5bUHM&callback=initMap">
-    </script>
   <head>
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
@@ -260,7 +260,15 @@ else{
     
    
 ?>
+<style>
 
+.owl-carousel .owl-item img {
+    /*height: 200px;
+     width: 200px;*/
+    object-fit: cover;
+}
+    
+</style>
   </head>
   <body>
 
@@ -308,6 +316,27 @@ else{
             </div>
           </div>
         </section>
+        <?php
+        if($w_id==102){
+            echo ('<div class="row">
+        <iframe src="audio.ogg" allow="autoplay" id="iframeAudio" style="display:none"></iframe>
+          <audio id="playAudio" autoplay controls loop style="margin:0px auto;">
+            <source src="audio.ogg" type="audio/ogg">
+          </audio>
+         </div>
+        ');
+        
+    }
+        ?>
+                  <script>
+                var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+    if(!isChrome){
+      $('#iframeAudio').remove()}
+
+  else{
+     $('#playAudio').remove() //just to make sure that it will not have 2x audio in the background 
+  }
+          </script>
         <!-- end welcome screen -->
         <!-- section with custom paralax divider -->
         <section id="the-couple" class="row expanded couple custom-paralax <?php if(isset($_SESSION['theme'])){echo $_SESSION['theme'];} else{echo "pinetrees-flat";} ?>">
@@ -337,7 +366,7 @@ else{
         <!-- end section with custom paralax divider -->
         <!-- divider image carousel -->
          <section class="row expanded carousel-container">
-          <h2 class="show-for-sr">Prewedding shot Suandi & nanik</h2>
+          <h2 class="show-for-sr">Pre-Wedding Pictures</h2>
           <div class="carousel-5">
             <?php
               $sql5="SELECT img_name FROM `invyt_gal` WHERE w_id= ".$w_id;
@@ -348,22 +377,11 @@ else{
   
             echo'
             <div class="item">
-              <img alt="" src="'.'uploads/gal/'.$i_n.'">
+              <img alt="" src="'.'uploads/gal/'.$i_n.'" style="height:200px">
             </div>';
               }
             ?>
-            <div class="item">
-              <img alt="" src="http://placehold.it/460x460">
-            </div>
-            <div class="item">
-              <img alt="" src="http://placehold.it/460x460">
-            </div>
-            <div class="item">
-              <img alt="" src="http://placehold.it/460x460">
-            </div>
-            <div class="item">
-              <img alt="" src="http://placehold.it/460x460">
-            </div>
+          
           </div>
         </section>
         <!-- end divider image carouesel -->
@@ -498,7 +516,7 @@ else{
             <div class="row">
             <div class="column"><a href="tel:<?php echo $w_ph1; ?>"><?php echo $w_ph1; ?></a></div>
             <!--<div class="column"><span class="lnr lnr-map-marker"></span> Lorem street 222x</div>-->
-            <div class="column"><a href="mailto:<?php echo $w_email; ?>"> <?php echo $w_email; ?></a></div>
+            <div class="column"><a href="mailto:<?php echo $w_email; ?>" style="word-wrap: break-word;"> <?php echo $w_email; ?></a></div>
             </div>
             <div class="row spacing s-30"></div>
           </div>
@@ -506,8 +524,66 @@ else{
         <div id="map" data-lat=<?php echo $latitude; ?> data-long=<?php echo $longitude; ?> data-title="My wedding here!"></div><!-- LOAD GOOGLE MAPS -->
         <!-- end of maps thing -->
 
-        <!-- begin gifts section -->
-        <section id="gifts" class="row expanded smooth-waves">
+      
+        <!-- begin testimonial section -->
+        <section id="testimonial" class="row expanded smooth-waves">
+          <div class="column with-carousel">
+          <h2 class="text-center main-heading">Best Wishes</h2>
+            <div class="row spacing s-30"></div>
+               <div class="carousel text-center">
+                
+                <div class="item row align-center">
+                  <div class="column small-12 large-6"> 
+                  <div class="thumbnail thumbnail-md thumbnail-circle thumbnail-line"> 
+                    <img alt="testimonial people 1" src="uploads/wishes/invyt.png"> 
+                  </div> 
+                  <h3>Team Invyt</h3> 
+                  <p>We wish the lovely couple a very happy and prosperous married life</p> 
+                </div> 
+             </div> 
+              
+            <?php
+          $sql2="select * from invyt_greetings where w_id=".$w_id;
+          $det = mysqli_query($con,$sql2);
+
+	while($row = mysqli_fetch_array($det)) {
+    if($row["is_rev"]==1)
+    {
+      
+    echo'
+   
+
+            <!-- Start carousel testimonial -->
+            <div class="item row align-center">
+              <!-- item 1 -->
+               <div class="column small-12 large-6">
+                  <div class="thumbnail thumbnail-md thumbnail-circle thumbnail-line">
+                    <img alt="testimonial people 1" src="uploads/wishes/'.$row["pic_path"].'">
+                  </div>
+                  <h3>'.$row["g_name"].'</h3>
+                  <p>'.$row["g_msg"].'</p>
+                </div>
+               </div>
+
+';
+    }
+  }
+              ?>
+             
+              </div>
+               <div class="row text-center">
+            <!--  <a class="column" href="p2/wish.php?rid=<?php echo $w_id; ?>" >Wish them</a>-->
+            <a class="button standout" href="p2/wish.php?rid=<?php echo $w_id; ?>" style="background: #8a3aff; color:white;font-size: 18px;border-radius: 25px;border:1px solid #ffffff; height:50px;padding-top: 13px;">Wish them</a>
+             <div class="row spacing s-100"></div>
+            <div class="row spacing s-100"></div>
+              </div>
+            </div>
+            <!-- End carousel testimonial -->
+
+          </div>
+        </section>
+   <!-- begin gifts section -->
+   <section id="gifts" class="row expanded smooth-waves">
           <div class="column">
             <h2 class="text-center main-heading">Thank You</h2>
             <h5 class="text-center">Expecting your presence and blessings on our special day! Thank you for your love and support. </h5>
@@ -525,62 +601,12 @@ else{
 
 
 
-            <section class="row expanded asanoha text-center">
-          <h2 class="show-for-sr">Suandi & Nanik Wedding Party Google maps coordinate place</h2>
-          <div class="column">
-            <div class="row spacing s-30"></div>
-            <div class="row">
-            <div class="column"><a href="tel:9447123577">9447123577</a></div>
-            <div class="column"><span class="lnr lnr-map-marker"></span>Kurichiyath HO, Manakulangara PO, Kodakara</div>
-            <div class="column"><a href="mailto:sruthywedsmithun@gmail.com"> sruthywedsmithun@gmail.com</a></div>
-            </div>
-            <div class="row spacing s-30"></div>
-          </div>
-        </section>
-        <div id="map" data-lat="10.310570" data-long="76.330197" data-title="My wedding here!"></div><!-- LOAD GOOGLE MAPS -->
+            
+        <!-- LOAD GOOGLE MAPS -->
         <!-- end of maps thing -->
 
-        <!-- begin testimonial section -->
-        <section id="testimonial" class="row expanded smooth-waves">
-          <div class="column with-carousel">
-          <h2 class="text-center main-heading">They say...</h2>
-            <div class="row spacing s-30"></div>
-            <?php
-          $sql2="select * from invyt_greetings where w_id=".$w_id;
-          $det = mysqli_query($con,$sql2);
+        
 
-	while($row = mysqli_fetch_array($det)) {
-    if($row["is_rev"]==1)
-    {
-    echo'
-           
-
-            <!-- Start carousel testimonial -->
-            <div class="carousel text-center">
-              <!-- item 1 -->
-              <div class="item row align-center">
-                <div class="column small-12 large-6">
-                  <div class="thumbnail thumbnail-md thumbnail-circle thumbnail-line">
-                    <img alt="testimonial people 1" src="uploads/wishes/'.$row["pic_path"].'">
-                  </div>
-                  <h3>'.$row["g_name"].'</h3>
-                  <p>'.$row["g_msg"].'</p>
-                </div>
-              </div>
-
-';
-    }
-  }
-              ?>
-              <div class="row text-center">
-            <!--  <a class="column" href="p2/wish.php?rid=<?php echo $w_id; ?>" >Wish them</a>-->
-            <a class="button standout" href="p2/wish.php?rid=<?php echo $w_id; ?>" style="background: #8a3aff; color:white;font-size: 18px;border-radius: 25px;border:1px solid #ffffff; height:50px;padding-top: 13px;">Wish them</a>
-              </div>
-            </div>
-            <!-- End carousel testimonial -->
-
-          </div>
-        </section>
 
 
 
@@ -626,7 +652,7 @@ else{
     <script type="text/javascript" src="scripts/lightbox.min.js"></script>
     <script type="text/javascript" src="scripts/skrollr.min.js"></script>
     <script type="text/javascript" src="scripts/shuffle.min.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4tXuwb48eW-1L69vx61x9fvE&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4tXuwb48eW-1L69vx61x9fvEeJ5geFy0&callback=initMap"></script>
     <script type="text/javascript" src="scripts/app.js"></script>
   </body>
 </html>
@@ -638,7 +664,6 @@ else{
 
 
 file_put_contents("../".$g_name."weds".$b_name."_".$r.".html", ob_get_contents());
-header("Location: ../not_act.php"); 
+header("Location: ../notifications.php"); 
   exit; 
-
 ?>

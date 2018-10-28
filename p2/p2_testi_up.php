@@ -3,7 +3,7 @@
 include '../config.php';
 $con = mysqli_connect($host, $user, $password,$dbname);
 date_default_timezone_set('Asia/Calcutta');
-$oldname="abc.jpg";
+$oldname="abc.png";
 
 
 session_start();
@@ -16,7 +16,9 @@ if(isset($_FILES["file"]))
 //if(($_FILES["file"])='')
 {
     $target_dir = "uploads/wishes/";
+    $target_dir2 = "../uploads/wishes/";
     $target_file = $target_dir .basename($_FILES["file"]["name"]);//$_POST["cr_img"];// 
+    $target_file2= $target_dir2 .basename($_FILES["file"]["name"]);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     // Check if image file is a actual image or fake image
@@ -57,6 +59,7 @@ if(isset($_FILES["file"]))
     // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+            copy($target_file, $target_file2) ; 
             echo "The file ". basename( $_FILES["file"]["name"]). " has been uploaded.";
         } else {
             echo "Sorry, there was an error uploading your file.";
@@ -68,6 +71,8 @@ if($filename==''){
 
 //$filename=$_POST["cr_img"];
 $filename2 = str_replace(" ", "-", $filename);
+rename("uploads/wishes/".$filename, "uploads/wishes/".$filename2) ;
+rename("../uploads/wishes/".$filename, "../uploads/wishes/".$filename2) ;
 //rename("uploads/wishes/".$_POST["cr_img"], "uploads/wishes/abc2.jpg") ;
 
 
@@ -109,9 +114,9 @@ if (!$con) {
 
         $mailid=$ema;
 		$headers = "From: info@invyt.in" . "\r\n";
-		$message1=urlencode("You got a new wish in your invyt! Go to your invyt dashboard and verify the wish to make it visibile in your invyt.");
+		$message1="Greetings from invyt, \n Someone just wished you for your wedding. Click here - https://www.invyt.in/notifications.php to view and approve it";
 	
-		mail($mailid,"Wish verification- invyt",$message1,$headers);
+		mail($mailid,"Greeting from your guest - invyt",$message1,$headers);
 
         header("Location:../p2_testi_suc.php?rid=".$_POST["w_id"]);
         exit;

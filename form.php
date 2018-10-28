@@ -198,12 +198,13 @@ if(isset($_GET['thm'])){
             <div class="form-group">
                 <div class="form__field--half" style="margin:0 auto; float:none; padding-bottom:20px;padding-top:20px;">
                 Contact Number (displayed to guests)<br><br>
-                    <input type="text" pattern="[789][0-9]{9}" name="w_phno_1" class="form__field form__text" ></input>
+                    <input type="text"  oninvalid="this.setCustomValidity('Enter 10 digit Phone Number')"
+    oninput="this.setCustomValidity('')" pattern="[789][0-9]{9}" name="w_phno_1" class="form__field form__text" ></input>
                 </div>
             </div>
         
 
-                    <p>Upload image</p>
+                    <p>Upload your favourite pic together</p>
                     <label for="file-input">File upload</label>
                     <input type="file" name="file" id="file-input"  required>
             <br><br>  

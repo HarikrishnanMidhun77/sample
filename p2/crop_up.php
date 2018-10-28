@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 $blob = $_POST['form']['croppedImage'];
 $blob2 = $_POST['croppedImage'];
 echo $blob;

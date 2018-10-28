@@ -60,8 +60,8 @@ if (!(is_numeric($_SESSION['login_user'])))
   <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, width=device-width" />
   <link href='https://fonts.googleapis.com/css?family=Montserrat&subset=latin' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Kirang+Haerang&subset=latin' rel='stylesheet' type='text/css'>
-  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.4/waypoints.min.js"></script>
+  <script src="js/jquery-1.11.0.min.js"></script>
+  <script src="js/waypoints.min.js"></script>
   <style type="text/css">
 
 @-webkit-keyframes pulse {
@@ -107,12 +107,9 @@ s0.parentNode.insertBefore(s1,s0);
 <header class="header">
   <div class="container header__container">
   <a class="header__logo"  href="index.php"><img class="header__img" src="img/logo.png"></a> 
-     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+     <button  type="button" class="navbar-toggle collapsed" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="padding-top: 4px;">
+              <a class="btn btn--revert btn--width" href="#price" style="background: #8a3aff; color:white;border-radius: 5px; width: 170px;">Start Now for Free</a>
+     </button>
   
   <div class="header__menu">
     <nav id="navbar" class="header__nav collapse">
@@ -139,9 +136,10 @@ s0.parentNode.insertBefore(s1,s0);
                 <h2 class="features-content-title">Inviting has never been this fun! </h2>
                 <h2 class="features-content-subtitle">whatever be the occasion, invyt is here to invite your loved ones</h2>
                 <div class="site__box-link">
-                <a class="btn btn--purple btn--width" href="p2/p2_form.php">Create</a>
+                <a class="btn btn--purple btn--width" href="#price">Get Started</a>
                 <a class="btn btn--revert btn--width" href="#design">Samples</a>
-                </div>
+                </div><br><br>
+                <b style="font-size: 0.9em;">Already have an account? <a href="login.php">Log In Here</a></b>
             </div>
         </div>
         <div class="device features-device-right web-stories">
@@ -328,8 +326,9 @@ s0.parentNode.insertBefore(s1,s0);
     <div class="file__info">
     <center>
     <h2 class="file__title">
-    Create Invyt
+    Pick a Plan
     </h2>
+    Select one of the plans below to get started.
     </center>
   </div>  
   </div>
@@ -339,8 +338,9 @@ s0.parentNode.insertBefore(s1,s0);
     <div class="file__info">
     <center>
     <h2 class="file__title">
-    Sign in & Pay
+    Enter Details
     </h2>
+    Choose a design and fill up a form. 
     </center>
   </div>  
   </div>
@@ -350,8 +350,9 @@ s0.parentNode.insertBefore(s1,s0);
     <div class="file__info">
     <center>
     <h2 class="file__title">
-      Share Your Invyt
+      Sign Up & Share
     </h2>
+    Start inviting your guests right away!
     </center>
   </div>  
   </div>
@@ -375,13 +376,14 @@ s0.parentNode.insertBefore(s1,s0);
 <div class="row row--center row--margin">
     <div class="cardo">
   <div class="col-md-4 col-sm-4 price-box price-box--purple">
+    <a href="form.php" style="text-decoration: none;">
     <div class="price-box__wrap"><br>
       <div class="price-box__img"></div>
       <h1 class="price-box__title">
         Basic
       </h1>
        <h2 class="price-box__discount">
-          <span class="price-box__dollar">&#x20B9;</span>799<span class="price-box__discount--light"></span>
+          <span class="price-box__dollar"></span>Free<span class="price-box__discount--light"></span>
       </h2><br>
        <ul class="price-box__list">
         <li class="price-box__list-el">3+ Templates</li>
@@ -402,13 +404,15 @@ s0.parentNode.insertBefore(s1,s0);
       </ul>
        <div class="price-box__btn">
       <a class="btn btn--purple btn--width" href="form.php">Start now</a>
-    </div>
+      </div>
   </div>
+  </a>
   </div>
 </div>
   <!-- second -->
   <div class="cardo">
   <div class="col-md-4 col-sm-4 price-box price-box--violet">
+  <a href="p2/p2_form.php" style="text-decoration: none;">
   <div class="price-box__wrap pulse" style="background: url(https://image.ibb.co/bRNde9/11111.png) no-repeat center center;background-color: white; background-position: 0px 0px; -webkit-animation-duration: 5s; animation-duration: 5s; -webkit-animation-fill-mode: both; animation-fill-mode: both; animation-iteration-count:infinite;">
       <br>
       <div class="price-box__img"></div>
@@ -416,7 +420,7 @@ s0.parentNode.insertBefore(s1,s0);
         Standard
       </h1>
       <h2 class="price-box__discount">
-      <span class="price-box__dollar">&#x20B9;</span>1499<span class="price-box__discount--light"></span>
+      <span class="price-box__dollar" style="font-weight: bold; color: #8198ae;">&#x20B9;</span>999<span class="price-box__discount--light"></span>
       </h2><br>
       <ul class="price-box__list">
         <li class="price-box__list-el">3+ Templates</li>
@@ -437,21 +441,23 @@ s0.parentNode.insertBefore(s1,s0);
       </ul>
       <div class="price-box__btn">
       <a class="btn btn--purple btn--width" href="p2/p2_form.php">Start now</a>
-    </div>
+      </div>
   </div>
+  </a>
   </div>
 </div>
 
 <!-- terzo -->
 <div class="cardo">
   <div class="col-md-4 col-sm-4 price-box price-box--blue">
+  <a href="#contact" style="text-decoration: none;">
   <div class="price-box__wrap"><br>
       <div class="price-box__img"></div> 
       <h1 class="price-box__title">
         Premium
       </h1>
-      <h2 class="price-box__discount">Starts at
-      <span class="price-box__dollar">&#x20B9;</span>5k<span class="price-box__discount--light"></span>
+      <h2 class="price-box__discount">
+      <span class="price-box__dollar" style="font-weight: bold; color: #8198ae;">Starts at &#x20B9;</span>4999<span class="price-box__discount--light"></span>
       </h2><br>
       <ul class="price-box__list">
         <li class="price-box__list-el">Unlimited Customisation </li>
@@ -474,6 +480,7 @@ s0.parentNode.insertBefore(s1,s0);
       <a class="btn btn--purple btn--width" href="#contact">Start now</a>
     </div>
   </div>
+  </a>
   </div>
 </div>
 </div>

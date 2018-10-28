@@ -79,11 +79,16 @@ $w_id=$_GET["rid"];
   <div class="header__menu">
     <nav id="navbar" class="header__nav collapse">
       <ul class="header__elenco">
-        <li class="header__el header__el--blue"><a href="index.html" class="btn btn--white">Back →</a></li>
+        <li class="header__el header__el--blue"><button onclick="myFunction()" class="btn btn--white">← Back </button></li>
       </ul>
     </nav>
   </div>
     </div>
+    <script type="text/javascript">
+    function myFunction() {
+  window.history.back();
+
+}</script>
 </header>
     <form method="POST" name="f1" action="p2_testi_up.php" enctype="multipart/form-data">
 <div class="container">

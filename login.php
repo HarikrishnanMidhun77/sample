@@ -63,21 +63,12 @@
 
 <header class="header">
   <div class="container header__container">
-    <a class="header__logo"  href="index.php"><img class="header__img" src="img/logo.png"></a>  
-     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-  
-  <div class="header__menu">
-    <nav id="navbar" class="header__nav collapse">
-      <ul class="header__elenco">
-        <li class="header__el header__el--blue"><a href="index.php" class="btn btn--white">← Back</a></li>
-      </ul>
-    </nav>
-  </div>
+      <a class="header__logo"  href="index.php">
+        <img class="header__img" src="img/logo.png">
+      </a>
+      <li class="header__el header__el--blue" style="float:right; height: 66px;">
+          <a href="index.php" class="btn btn--white" id="back_button" style="padding-top: 10px;">← Back</a>
+      </li>
     </div>
 </header>
     

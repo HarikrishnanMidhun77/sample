@@ -58,10 +58,10 @@ save.addEventListener('click', function (e) {
     cropped.innerHTML='<input type="hidden"  name="rname"  value="'+rand+'"><input type="file"  name="file2" >';
     formData.append('croppedImage', blob);
     formData.append('rname', rand);
-   alert(rand);
+   //alert(rand);
     // Use `jQuery.ajax` method
     $.ajax({
-      url:'http://localhost/invyt01/p2/crop_up.php', 
+      url:'https://invyt.in/p2/crop_up.php', 
       method: 'post',
      // data:"rname="+rand+"&croppedImage="+blob,
       data: formData,
@@ -69,11 +69,11 @@ save.addEventListener('click', function (e) {
      contentType: false,
       success() {
         console.log('Upload success');
-        alert("ajax success");
+       // alert("ajax success");
       },
       error() {
         console.log('Upload error');
-        alert("ajax failed");
+        //alert("ajax failed");
       },
     });
   });

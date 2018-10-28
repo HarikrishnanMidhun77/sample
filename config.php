@@ -1,6 +1,7 @@
 <?php
-$host = "localhost"; /* Host name */
-$user = "root"; /* User */
-$password = ""; /* Password */
-$dbname = "invyt_db"; /* Database name */
+$host = "mysql.hostinger.in"; /* Host name */
+$user = "u857308499_invyt"; /* User */
+$password = "invyt949596"; /* Password */
+$dbname = "u857308499_invyt";
+
 ?>

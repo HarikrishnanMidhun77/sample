@@ -2,7 +2,7 @@
 <html lang="en">
 <?php
 include 'config.php';
-
+header("Access-Control-Allow-Origin: *");
 $con = mysqli_connect($host, $user, $password,$dbname);
 
 session_start(); 
@@ -57,7 +57,7 @@ $nm= explode('@', $_SESSION['login_user'], 2)
 
     <div class="o-page">
       <header class="c-navbar u-mb-large">
-        <a class="c-navbar__brand" href="#">
+        <a class="c-navbar__brand" href="index.php">
           <img src="https://image.ibb.co/mFQ8aU/logo.png">
           </a>
 

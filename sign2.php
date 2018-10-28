@@ -1,29 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" >
-<?php
-include 'config.php';
-
-$con = mysqli_connect($host, $user, $password,$dbname);
-session_start(); 
-if (!$con) {
-    die("Connection failed: " . mysqli_connect_error());
-   }
-   else{
-$sql3="SELECT `w_email`, `w_phno_1` FROM `invyt_form` WHERE w_id= ".$_SESSION['wid'];
-      
-      $det = mysqli_query($con,$sql3);
-      if($row = mysqli_fetch_array($det)) {
-          $ema=$row["w_email"];
-          $ph=$row["w_phno_1"];
-      }
-    }
-      ?>
+    <?php
+    /*session_start(); 
+    if(isset($_SESSION['login_user'])){ 
+        header("Location:form.php"); 
+        exit; }*/
+        ?>
 <head>
     <meta charset="UTF-8">
     <title>invyt-inviting has never been this fun!</title>
   <meta name="description" content="Invite your friends and family to your celebration by creating an invyt - a classy, elegant and efficient site to deliver an unforgettable digital experience">
   <meta property="og:title" content="invyt - inviting has never been this fun" />
-<meta property="og:url" content="http://www.invyt.in/signup.html" />
+<meta property="og:url" content="http://www.invyt.in/index.html" />
   <meta property="og:description" content="Create a unique experience for your friends and family by inviting them to your celebration using invyt">
   <meta property="og:image" content="http://invyt.in/img/pic.png">
   <meta property="og:type" content="website" />
@@ -55,10 +43,9 @@ $sql3="SELECT `w_email`, `w_phno_1` FROM `invyt_form` WHERE w_id= ".$_SESSION['w
 
 <body>
 
-
 <header class="header">
   <div class="container header__container">
-      <a class="header__logo"  href="index.php"><img class="header__img" src="img/logo.png"></a> 
+    <a class="header__logo"  href="index.php"><img class="header__img" src="img/logo.png"></a> 
      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
@@ -80,32 +67,30 @@ $sql3="SELECT `w_email`, `w_phno_1` FROM `invyt_form` WHERE w_id= ".$_SESSION['w
     <div class="features-container-shell clearfix">
         <div class="features-content-container features-content-container-left web-stories">
             <br>
-            <form method="POST" action="signup2.php">
             <div class="features-content">
-            <h1 class="row__title">Invite guests like never before</h1><br><br><br>
+            <h1 class="row__title">Signin To Your Account</h1><br><br><br>
+            <form method="POST" action="log2.php">
             <div class="form-group">
-                <input type="email" name="c_email" value="<?php echo $ema; ?>" placeholder="Email address" class="form__field form__text" required></input>
+             
+                <input type="email" name="c_email"  placeholder="Enter Email ID" class="form__field form__text" required></input>
             </div>
             <div class="form-group">
-                <input type="text" name="c_phno" value="<?php echo $ph; ?>"  pattern="[789][0-9]{9}" placeholder="Phone Number" class="form__field form__text" required></input>
-            </div>
-            <div class="form-group">
-               <input type="password" name="c_password"  placeholder="Password" class="form__field form__text" required></input>
+               <input type="password" name="c_password"  placeholder="Enter Password" class="form__field form__text" required></input>
             </div>
             <br>
             <center>
             <div class="site__box-link">
-                <button class="btn btn--purple btn--width" type="submit">Signup</button>
+                <button class="btn btn--purple btn--width" type="submit">Signin</button>
             </div>
           </form>
             <br><br>
-            Already on Invyt ? <a href="login2.php" style="color:blue;"><b>Sign in</b></a>
+            <a href="sign2.php"><b>New to invyt? Signup here!</b></a>
             </center>
             </div>
         </div>
         <div class="device features-device-right web-stories">
             <div class="site">
-            <img class="site__img" src="img/signup.svg">
+            <img class="site__img" src="img/signin.svg">
             </div>
         </div> 
     </div>

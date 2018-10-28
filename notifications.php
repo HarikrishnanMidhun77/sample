@@ -2,6 +2,7 @@
 
 <?php
      include 'config.php';
+     header("Access-Control-Allow-Origin: *");
      $con = mysqli_connect($host, $user, $password,$dbname);
       session_start(); 
       if(!$_SESSION['login_user']){ 
@@ -35,7 +36,7 @@
 
     <div class="o-page">
       <header class="c-navbar u-mb-large">
-        <a class="c-navbar__brand" href="#">
+        <a class="c-navbar__brand" href="index.php">
           <img src="https://image.ibb.co/mFQ8aU/logo.png">
           </a>
 
@@ -76,7 +77,7 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
       <script>
 
-          function funAct(gid,rev){
+          function funAct(gid,rev,wid){
               var r;
               if(rev==0){
                   r=1;
@@ -84,17 +85,17 @@
               else{
                   r=0;
               }
-              alert(gid);
+              //alert(gid);
             $.ajax({
-      url: 'http://localhost/invyt01/not_act.php',
-      type: 'post',
-      data: 'g_id='+gid+'&rev='+r,
+      url: 'https://invyt.in/not_act.php',
+      type: 'get',
+      data: 'g_id='+gid+'&rev='+r+'&wid='+wid,
       success: function(output) 
       {
-          alert('success, server says '+output);
+          //alert('success, server says '+output);
       }, error: function()
       {
-          alert('something went wrong, rating failed');
+          //alert('something went wrong, rating failed');
       }
    });
 
@@ -121,8 +122,10 @@
   $sql2="SELECT * FROM `invyt_greetings` WHERE w_id=".$w;
   $det2 = mysqli_query($con,$sql2);
  // $_SESSION['login_user']= $user_email;
+ $c=0;
   while($row = mysqli_fetch_array($det2)) {
     $g_id=$row["g_id"];
+     $w_id=$row["w_id"];
      $g_name=$row["g_name"];
      $g_pic=$row["pic_path"];
      $g_msg=$row["g_msg"];
@@ -137,7 +140,7 @@ echo'
                         <div class="o-media">
                           <div class="o-media__img u-mr-xsmall">
                             <div class="c-avatar c-avatar--small">
-                              <img class="c-avatar__img" src="p2/uploads/wishes/'.$g_pic.'" alt="Jessica Alba">
+                              <img class="c-avatar__img" src="p2/uploads/wishes/'.$g_pic.'" alt="uploads/wishes/abc.png">
                             </div>
                           </div>
                           <div class="o-media__body">
@@ -152,7 +155,7 @@ echo'
                        <!-- <a href="not_act.php?app=1" class="c-btn c-btn--success u-mb-xsmall"  style="width: 90px;">Approve</a>&ensp;
                         <a href="not_act.php?dis=1" class="c-btn c-btn--warning u-mb-xsmall" style="width: 90px;">Disable</a>&ensp;-->
                         <div class="c-choice c-choice--checkbox">
-                        <input class="c-choice__input" id="checkbox1" type="checkbox" onclick="funAct('.$g_id.','.$is_rev.')" name="act" value="1" ';if($is_rev==1){echo "checked";}else {echo "";} echo'><label class="c-choice__label" for="checkbox1"> Approve<br></label>
+                        <input class="c-choice__input" id="checkbox1'.$c.'" type="checkbox" onclick="funAct('.$g_id.','.$is_rev.','.$w_id.')"  value="1" ';if($is_rev==1){echo "checked";}else {echo "";} echo'><label class="c-choice__label" for="checkbox1'.$c.'"> Approve<br></label>
                         </div>
                         <a  class="c-btn c-btn--danger u-mb-xsmall" data-toggle="modal" data-target="#modal-delete" style="width: 90px;">Delete</a>
 
@@ -179,6 +182,7 @@ echo'
                     
                       </td>
                     </tr>';
+                    $c=$c+1;
   }
 }
 ?>

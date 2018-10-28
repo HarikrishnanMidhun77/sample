@@ -24,7 +24,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER,
                   "X-Auth-Token:test_b0a4c32f3206d6faa563647f3af"));
 $payload = Array(
     'purpose' => 'invyt',
-    'amount' => '799',
+    'amount' => '999',
     'phone' => $ph,
     'buyer_name' => $em,
     'redirect_url' => 'http://invyt.esy.es/feedb.php',

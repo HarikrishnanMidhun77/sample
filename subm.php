@@ -27,14 +27,15 @@ if (!$con) {
        
      //Step 1: Delete all entries with same bride name and groom name from org table
        
-     $sql5="SELECT `bride_name`, `groom_name` FROM `invyt_form` WHERE w_id= ".$_SESSION['wid'];
+     $sql5="SELECT `bride_name`, `groom_name`, `rand_no` FROM `invyt_form` WHERE w_id= ".$_SESSION['wid'];
       
     $det = mysqli_query($con,$sql5);
     if($row = mysqli_fetch_array($det)) {
         $b_name=$row["bride_name"];
         $g_name=$row["groom_name"];
+        $r=$row["rand_no"];
     }
-    $sql4 ="delete from invyt_form_org where bride_name='".$b_name."' and groom_name= '".$g_name."'";
+    $sql4 ="delete from invyt_form_org where bride_name='".$b_name."' and groom_name= '".$g_name."' and rand_no=".$r;
         $res=mysqli_query($con, $sql4);
 
     //Step 2 : delete the old entry from org table
@@ -96,13 +97,14 @@ $res=mysqli_query($con, $sql0);
             }
         }
        
-        $sql11="SELECT `pay_suc` FROM `invyt_form_org` WHERE w_id= ".$_SESSION['wid'];
+        $sql11="SELECT `pay_suc`,`w_plan` FROM `invyt_form_org` WHERE w_id= ".$_SESSION['wid'];
       
         $det = mysqli_query($con,$sql11);
         if($row = mysqli_fetch_array($det)) {
             $ps=$row["pay_suc"];
+             $pl=$row["w_plan"];
         }
-        if($ps==0){
+        if($ps==0 and $pl>1){
             header("Location: paym.php");
             exit;
         }

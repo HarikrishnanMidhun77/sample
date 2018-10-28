@@ -45,7 +45,7 @@ if(isset($_SESSION['login_user'])){
    
     $sql2="DELETE FROM invyt_login  WHERE c_email= '".$_SESSION['login_user']."'";
     mysqli_query($con, $sql2);
-
+echo $sql2;
 // make main back up database delete details of invyts created by the user.
    /* $sql ="INSERT INTO invyt_form_backup SELECT * FROM invyt_form_org WHERE c_email= '".$_SESSION['login_user']."'";
     if( mysqli_query($con, $sql)){

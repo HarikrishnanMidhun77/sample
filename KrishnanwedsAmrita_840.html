@@ -1,0 +1,546 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript">
+function rate()
+{
+
+   $.ajax({
+      url: 'https://invyt.in/cnt.php',
+      type: 'post',
+      data: 'wid='+102,
+      success: function(output) 
+      {
+        //  alert('success, server says '+output);
+      }, error: function()
+      {
+         // alert('something went wrong, rating failed');
+      }
+   });
+
+}
+
+window.onload = rate();
+
+function GetLatlong()
+    {
+      
+        var geocoder = new google.maps.Geocoder();
+        var address ="KM Auditorium, Manissery,Ottapalam ,Palakkad, Wedding"; //document.getElementById('textboxid').value;
+       // alert("KM Auditorium, Manissery,Ottapalam ,Palakkad, Wedding");
+        geocoder.geocode({ 'address': address }, function (results, status) {
+          //alert(status);
+            if (status == google.maps.GeocoderStatus.OK) {
+                var latitude = results[0].geometry.location.lat();
+                var longitude = results[0].geometry.location.lng();
+               // alert(latitude);
+                //document.getElementById('map').data-lat=latitude;
+                //document.getElementById('map').data-long=longitude;
+                var map = new google.maps.Map(document.getElementById('map'), {
+                 zoom: 19,
+                  center: {lat: latitude, lng: longitude}
+                   });
+                   var latlng = {lat: parseFloat(latitude), lng: parseFloat(longitude)};
+                   var marker = new google.maps.Marker({
+          position: latlng,
+          map: map
+        });
+            }
+        });
+       
+        //document.write("abc");
+    }
+    window.onload =GetLatlong;
+
+</script>
+
+  <head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>invyt - Krishnan weds Amrita</title>
+    <meta property="og:title" content="invyt - Krishnan weds Amrita" />
+    <meta property="og:url" content="https://www.invyt.in/KrishnanwedsAmrita.html" />
+    <meta property="og:description" content="Join us digitally in celebrating our wedding">
+    <meta property="og:image" content="https://www.invyt.in/uploads/AB683BBE-64A6-4A69-98D6-5F569906A201.jpeg">
+    <meta name="twitter:card" content="Create a unique experience for your friends and family by inviting them to your celebration using invyt"></meta>
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join us digitally in celebrating our wedding(invyt.in)">
+    <meta name="author" content="invyt.in">
+        <!--Google Analytics Script!-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121991542-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-121991542-1');
+    </script>
+    <!--load google/external fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Roboto+Slab:300,400" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <!-- main style --> 
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    
+  <style type="text/css">
+            @media (min-width: 1200px) {
+             #top{ background-position:0px -930px;}
+            }
+            @media (max-width: 1200px) {
+             #top{ background-position:0px -930px;}
+            }
+            @media (max-width: 480px) {
+          #top {background-position:-20px 0px;}
+  </style><style>
+
+.owl-carousel .owl-item img {
+    /*height: 200px;
+     width: 200px;*/
+    object-fit: cover;
+}
+    
+</style>
+  </head>
+  <body>
+
+    <h1 class="show-for-sr">Krishnan & Amrita Wedding Party Invitation</h1>
+    <!-- sticky navbar -->
+    <div data-sticky-container>
+      <div class="title-bar ">
+         <a  href="../index.php" style="float: left; position: fixed; z-index: 19999;padding-top: 90px; padding-left: 30px; position: relative;"><img src="img/logowyt.png"></a> 
+        <button class="hamburger hamburger--arrow align-right" type="button" data-toggle="offCanvas">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- end sticky navbar -->
+    <!-- wrapping all content including off-canvas -->
+    <div class="off-canvas-wrapper">
+      <div class="off-canvas position-right" id="offCanvas" data-off-canvas data-close-on-click="false" data-content-scroll="false">
+        <ul class="vertical menu text-center">
+          <li><a href="#top">Krishnan & Amrita</a></li>
+          <li><a href="#the-couple">THE COUPLE</a></li>
+          <!--<li><a href="#the-stories">THE STORIES</a></li>-->
+          <li><a href="#timer">STILL COUNTING DOWN</a></li>
+          <li><a href="#events">EVENTS</a></li>
+          <!--<li><a href="#rsvp-form">RSVP</a></li>
+          <li><a href="#people">PEOPLE</a></li>
+          <li><a href="#gallery">GALLERY</a></li>
+          <li><a href="#gifts">GIFTS</a></li>-->
+        </ul>
+      </div><!-- end of off-canvas -->
+      <!-- start wrapping main content -->
+      <div class="off-canvas-content" data-off-canvas-content>
+        <!-- welcome screen -->
+        <section id="top" class="row expanded welcome-screen" style="background-image:url('uploads/AB683BBE-64A6-4A69-98D6-5F569906A201.jpeg');" data-top-top="transform:translateY(-20px)" data-top-bottom="transform:translateY(320px)"><!-- change background-image with yours -->
+          <div class="column">
+            <div class="welcome-text">
+              <div class="headline"> 04-Nov-2018</div>
+              <div class="center-names">
+                  <h2 class="show-for-sr">Krishnan & Amrita are getting married</h2>
+                  <div class="center"><div class="left">Krishnan</div>&<div class="right">Amrita</div></div>
+              </div>
+              <div class="footline">We are getting married</div>
+            </div>
+          </div>
+        </section>
+        <div class="row">
+        <iframe src="audio.ogg" allow="autoplay" id="iframeAudio" style="display:none"></iframe>
+          <audio id="playAudio" autoplay controls loop style="margin:0px auto;">
+            <source src="audio.ogg" type="audio/ogg">
+          </audio>
+         </div>
+                          <script>
+                var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+    if(!isChrome){
+      $('#iframeAudio').remove()}
+
+  else{
+     $('#playAudio').remove() //just to make sure that it will not have 2x audio in the background 
+  }
+          </script>
+        <!-- end welcome screen -->
+        <!-- section with custom paralax divider -->
+        <section id="the-couple" class="row expanded couple custom-paralax pinetrees-flat">
+          <div class="wrapper"></div>
+          <div class="body">
+            <h2 class="text-center main-heading">The Couple</h2>
+            <h5 class="text-center">
+          Solicit your esteemed presence with family to grace the auspicious occasion of the marriage of Krishnan & Amrita</h5>
+            <div class="row picture-frame">
+              <div class="people1">
+                <div class="thumbnail thumbnail-line thumbnail-circle thumbnail-xs"><img alt="Krishnan" src="https://image.ibb.co/jZENRo/mustanche.png"></div>
+                <h5>S/o Mrs Sobhana and Mr Suryanarayanan</h5>
+              </div><!-- end of bride 1 -->
+              <div class="frame-wrapper">
+                <div class="frame">
+                  <img alt="Krishnan & Amrita" src="uploads/AB683BBE-64A6-4A69-98D6-5F569906A201.jpeg">
+                </div>
+              </div><!-- end frame couple wedding/prewedding shoot -->
+              <div class="people2">
+                <div class="thumbnail thumbnail-line thumbnail-circle thumbnail-xs"><img alt="Amrita" src="https://image.ibb.co/coRmmo/love_image.png"></div>
+                <h5>D/o Mrs Parvathy and Mr Chithambaran</h5>
+                </a>
+              </div><!-- end of bride 2 -->
+            </div>
+          </div>
+        </section>
+        <!-- end section with custom paralax divider -->
+        <!-- divider image carousel -->
+         <section class="row expanded carousel-container">
+          <h2 class="show-for-sr">Pre-Wedding Pictures</h2>
+          <div class="carousel-5">
+            
+            <div class="item">
+              <img alt="" src="uploads/gal/photo_2018-10-19_14-16-48.jpg" style="height:200px">
+            </div>
+            <div class="item">
+              <img alt="" src="uploads/gal/photo_2018-10-19_14-17-01.jpg" style="height:200px">
+            </div>
+            <div class="item">
+              <img alt="" src="uploads/gal/photo_2018-10-19_14-17-14.jpg" style="height:200px">
+            </div>
+            <div class="item">
+              <img alt="" src="uploads/gal/photo_2018-10-19_14-41-39.jpg" style="height:200px">
+            </div>
+            <div class="item">
+              <img alt="" src="uploads/gal/photo_2018-10-19_14-41-42.jpg" style="height:200px">
+            </div>
+            <div class="item">
+              <img alt="" src="uploads/gal/photo_2018-10-19_14-41-47.jpg" style="height:200px">
+            </div>
+            <div class="item">
+              <img alt="" src="uploads/gal/photo_2018-10-19_14-41-50.jpg" style="height:200px">
+            </div>
+            <div class="item">
+              <img alt="" src="uploads/gal/photo_2018-10-19_14-41-54.jpg" style="height:200px">
+            </div>
+            <div class="item">
+              <img alt="" src="uploads/gal/photo_2018-10-19_14-41-58.jpg" style="height:200px">
+            </div>
+            <div class="item">
+              <img alt="" src="uploads/gal/photo_2018-10-19_14-42-02.jpg" style="height:200px">
+            </div>
+            <div class="item">
+              <img alt="" src="uploads/gal/photo_2018-10-19_14-42-41.jpg" style="height:200px">
+            </div>          
+          </div>
+        </section>
+        <!-- end divider image carouesel -->
+       
+        <!-- end timeline/story -->
+        <!-- time counter -->
+        <section id="timer" class="row expanded time-countdown" style="background-image:url(https://image.ibb.co/hLw3yo/timebg.jpg)"><!-- change background url -->
+          <div class="bg-overlay bg-overlay-heart bg-overlay-dark animated wobble_bg"></div>
+          <div class="column text-center">
+            <div class="row">
+              <h2>Please join us on our happiest day!</h2>
+            </div>
+            <div class="row counter" id="getting-started" data-end-date="2018-11-04"></div>
+            <!-- <div class="row"><a class="button standout" href="#rsvp-form">RSVP</a></div>-->
+          </div>
+          <!-- need js to handling this, go to bottom of this file to change end-date event -->
+        </section>
+        <!-- end time counter -->
+        <!-- Blogpost -->
+        <section id="events" class="row blog-container">
+          <div class="column body">
+            <h2 class="text-center main-heading">Venue</h2>
+            <h5 class="quote text-center">Come celebrate the joy of our union! Hope you will be able to make it! </h5>
+            <div class="blog">
+              <!-- eachpost 1 start -->
+               <div class="each-post">
+                  <!--<div class="thumbnail thumbnail-xxl"><img alt="" src=" https://image.ibb.co/ghX3XT/location_image.png"></div>-->
+                <div class="content">
+                  <!-- <h3>Mundoor</h3>-->
+                  <div class="meta-post">
+                  <!--  <span class="location">KM Auditorium, Manissery,Ottapalam ,Palakkad</span>
+                    <span class="date-time">09:30 to 10:30 </span>
+                  </div>
+                  <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old</p>-->
+                </div>
+              </div>
+              <!-- end eachpost 1 start -->
+              <!-- eachpost 2 start -->
+              <div class="each-post">
+                <div class="thumbnail thumbnail-xxl"><img alt="" src="https://image.ibb.co/ghX3XT/location_image.png"></div>
+                <div class="content">
+                  <h3>Wedding</h3>
+                  <div class="meta-post">
+                    <span class="location">KM Auditorium, Manissery,Ottapalam ,Palakkad</span>
+                    <span class="date-time">09:30 to 10:30</span>
+                  </div>
+                  <p>Solicit your esteemed presence with family to grace the auspicious occasion of the marriage with your presence and bless the wedded couple.</p>
+                </div>
+                </div>
+
+ 
+ <div class="each-post">
+                <div class="thumbnail thumbnail-xxl"><img alt="" src="https://image.ibb.co/ghX3XT/location_image.png"></div>
+                <div class="content">
+                  <h3>Reception</h3>
+                  <div class="meta-post">
+                    <span class="location">Manthakara Ganapathy Auditorium, Palakkad</span>
+                    <span class="date-time">11:00-14:00,2018-11-05</span>
+                  </div>
+                  <p>Solicit your esteemed presence with family to grace the auspicious occasion of the reception with your presence and bless the wedded couple.</p>
+                </div>
+                </div>
+
+                
+
+
+
+              <!-- end eachpost 2 start -->
+              <!-- eachpost 3 start -->
+            
+     </div>
+          
+          </section>
+
+        <!-- Photo Gallery -->
+        <section id="gallery" class="row expanded gallery-container">
+          <div class="column">
+            <h2 class="text-center main-heading">Gallery</h2>
+            <ul class="filters">
+              <!-- define categories -->
+             <li class="" data-group="family">Photos</li>
+             <!-- <li class="" data-group="bride-groom">Bride & Groom</li>
+              <li class="" data-group="spots">Spots</li>
+            </ul>
+
+            <!-- div galleries wrapper -->    
+           <div id="grid" class="row galleries">
+              <!-- gallery 1 -->
+              
+                <figure class="gallery column large-4 medium-6 small-12" >
+                   <a href="uploads/gal/photo_2018-10-19_14-16-48.jpg" data-lightbox="gallery" data-title="Moments">
+                     <img src="uploads/gal/photo_2018-10-19_14-16-48.jpg" alt="">
+                     <div class="label-wrapper">
+                      
+                     </div>
+                   </a>
+                 </figure>
+                <figure class="gallery column large-4 medium-6 small-12" >
+                   <a href="uploads/gal/photo_2018-10-19_14-17-01.jpg" data-lightbox="gallery" data-title="Moments">
+                     <img src="uploads/gal/photo_2018-10-19_14-17-01.jpg" alt="">
+                     <div class="label-wrapper">
+                      
+                     </div>
+                   </a>
+                 </figure>
+                <figure class="gallery column large-4 medium-6 small-12" >
+                   <a href="uploads/gal/photo_2018-10-19_14-17-14.jpg" data-lightbox="gallery" data-title="Moments">
+                     <img src="uploads/gal/photo_2018-10-19_14-17-14.jpg" alt="">
+                     <div class="label-wrapper">
+                      
+                     </div>
+                   </a>
+                 </figure>
+                <figure class="gallery column large-4 medium-6 small-12" >
+                   <a href="uploads/gal/photo_2018-10-19_14-41-39.jpg" data-lightbox="gallery" data-title="Moments">
+                     <img src="uploads/gal/photo_2018-10-19_14-41-39.jpg" alt="">
+                     <div class="label-wrapper">
+                      
+                     </div>
+                   </a>
+                 </figure>
+                <figure class="gallery column large-4 medium-6 small-12" >
+                   <a href="uploads/gal/photo_2018-10-19_14-41-42.jpg" data-lightbox="gallery" data-title="Moments">
+                     <img src="uploads/gal/photo_2018-10-19_14-41-42.jpg" alt="">
+                     <div class="label-wrapper">
+                      
+                     </div>
+                   </a>
+                 </figure>
+                <figure class="gallery column large-4 medium-6 small-12" >
+                   <a href="uploads/gal/photo_2018-10-19_14-41-47.jpg" data-lightbox="gallery" data-title="Moments">
+                     <img src="uploads/gal/photo_2018-10-19_14-41-47.jpg" alt="">
+                     <div class="label-wrapper">
+                      
+                     </div>
+                   </a>
+                 </figure>
+                <figure class="gallery column large-4 medium-6 small-12" >
+                   <a href="uploads/gal/photo_2018-10-19_14-41-50.jpg" data-lightbox="gallery" data-title="Moments">
+                     <img src="uploads/gal/photo_2018-10-19_14-41-50.jpg" alt="">
+                     <div class="label-wrapper">
+                      
+                     </div>
+                   </a>
+                 </figure>
+                <figure class="gallery column large-4 medium-6 small-12" >
+                   <a href="uploads/gal/photo_2018-10-19_14-41-54.jpg" data-lightbox="gallery" data-title="Moments">
+                     <img src="uploads/gal/photo_2018-10-19_14-41-54.jpg" alt="">
+                     <div class="label-wrapper">
+                      
+                     </div>
+                   </a>
+                 </figure>
+                <figure class="gallery column large-4 medium-6 small-12" >
+                   <a href="uploads/gal/photo_2018-10-19_14-41-58.jpg" data-lightbox="gallery" data-title="Moments">
+                     <img src="uploads/gal/photo_2018-10-19_14-41-58.jpg" alt="">
+                     <div class="label-wrapper">
+                      
+                     </div>
+                   </a>
+                 </figure>
+                <figure class="gallery column large-4 medium-6 small-12" >
+                   <a href="uploads/gal/photo_2018-10-19_14-42-02.jpg" data-lightbox="gallery" data-title="Moments">
+                     <img src="uploads/gal/photo_2018-10-19_14-42-02.jpg" alt="">
+                     <div class="label-wrapper">
+                      
+                     </div>
+                   </a>
+                 </figure>
+                <figure class="gallery column large-4 medium-6 small-12" >
+                   <a href="uploads/gal/photo_2018-10-19_14-42-41.jpg" data-lightbox="gallery" data-title="Moments">
+                     <img src="uploads/gal/photo_2018-10-19_14-42-41.jpg" alt="">
+                     <div class="label-wrapper">
+                      
+                     </div>
+                   </a>
+                 </figure></div>
+           
+              <!-- END - gallery 11 -->
+              <div class="gallery-sizer"></div><!-- .gallery-sizer is markup helper for js (required) -->
+            </div>
+            <!-- END - div .galleries wrapper -->
+          </div>
+        </section>
+        <!-- end photo gallery -->
+
+        <!-- Section Short Contact and address + Google maps -->
+        <section class="row expanded asanoha text-center">
+          <h2 class="show-for-sr">Krishnan & Amrita Wedding Party Google maps coordinate place</h2>
+          <div class="column">
+            <div class="row spacing s-30"></div>
+            <div class="row">
+            <div class="column"><a href="tel:"></a></div>
+            <!--<div class="column"><span class="lnr lnr-map-marker"></span> Lorem street 222x</div>-->
+            <div class="column"><a href="mailto:krishnan_z1@yahoo.co.in" style="word-wrap: break-word;"> krishnan_z1@yahoo.co.in</a></div>
+            </div>
+            <div class="row spacing s-30"></div>
+          </div>
+        </section>
+        <div id="map" data-lat= data-long= data-title="My wedding here!"></div><!-- LOAD GOOGLE MAPS -->
+        <!-- end of maps thing -->
+
+      
+        <!-- begin testimonial section -->
+        <section id="testimonial" class="row expanded smooth-waves">
+          <div class="column with-carousel">
+          <h2 class="text-center main-heading">Best Wishes</h2>
+            <div class="row spacing s-30"></div>
+               <div class="carousel text-center"> 
+                <div class="item row align-center">
+                    <div class="column small-12 large-6">
+                        <div class="thumbnail thumbnail-md thumbnail-circle thumbnail-line">
+                            <img alt="testimonial people 1" src="uploads/wishes/girl.png">
+                        </div>
+                        <h3>Divya Aravind</h3>
+                        <p>Sorry. Wont be able to make it. Stuck in hyderabad for training. But my best wishes are always there with you both. Happy married life!</p>
+                    </div>
+                </div>
+                <div class="item row align-center">
+                    <div class="column small-12 large-6">
+                        <div class="thumbnail thumbnail-md thumbnail-circle thumbnail-line">
+                            <img alt="testimonial people 1" src="uploads/wishes/boy.png">
+                        </div>
+                        <h3>Suraj</h3>
+                        <p>Wish you both a very happy and married life.</p>
+                    </div>
+                </div>
+                   
+              
+                         
+              </div>
+               <div class="row text-center">
+            <!--  <a class="column" href="p2/wish.php?rid=102" >Wish them</a>-->
+            <a class="button standout" href="p2/wish.php?rid=102" style="background: #8a3aff; color:white;font-size: 18px;border-radius: 25px;border:1px solid #ffffff; height:50px;padding-top: 13px;">Wish them</a>
+             <div class="row spacing s-100"></div>
+            <div class="row spacing s-100"></div>
+              </div>
+            </div>
+            <!-- End carousel testimonial -->
+
+          </div>
+        </section>
+   <!-- begin gifts section -->
+   <section id="gifts" class="row expanded smooth-waves">
+          <div class="column">
+            <h2 class="text-center main-heading">Thank You</h2>
+            <h5 class="text-center">Expecting your presence and blessings on our special day! Thank you for your love and support. </h5>
+            <div class="spacing s-70"></div>
+            <!-- <div class="row">
+              <div class="column small-12 large-expand text-center"><div class="thumbnail thumbnail-md"><img alt="" src="http://placehold.it/160x160"></div></div>
+              <div class="column small-12 large-expand text-center"><div class="thumbnail thumbnail-md"><img alt="" src="http://placehold.it/160x160"></div></div>
+              <div class="column small-12 large-expand text-center"><div class="thumbnail thumbnail-md"><img alt="" src="http://placehold.it/160x160"></div></div>
+              <div class="column small-12 large-expand text-center"><div class="thumbnail thumbnail-md"><img alt="" src="http://placehold.it/160x160"></div></div>
+              <div class="column small-12 large-expand text-center"><div class="thumbnail thumbnail-md"><img alt="" src="http://placehold.it/160x160"></div></div>
+            </div>-->
+          </div>
+        </section>
+        <!-- end gifts section -->
+
+
+
+            
+        <!-- LOAD GOOGLE MAPS -->
+        <!-- end of maps thing -->
+
+        
+
+
+
+
+        <!-- begin footer -->
+        <footer class="row expanded" style="background-image:url('uploads/AB683BBE-64A6-4A69-98D6-5F569906A201.jpeg');">
+          <div class="bg-overlay bg-overlay-dark-green"></div>
+          <div class="column">
+            <h2 class="text-center">Save the date</h2>
+            <h1 class="text-center" style="color: black;font-family: Lato;">04-Nov-2018</h1>
+              <div class="row spacing s-30"></div>
+              <div class="row">
+                <div class="center-names trendy">
+                    <div class="center"><div class="left">Krishnan</div>&<div class="right">Amrita</div></div>
+                </div>
+              </div>
+              <div class="row spacing s-50"></div>
+              <div class="row footline">
+                <div class="column small-12 large-3">
+                  <a href="#" target="_blank"><i class="fa fa-facebook-square"></i></a>
+                  <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                </div>
+                <div class="column small-12 large-6">Created with <i class="fa fa-heart"></i> using <a href="https://www.invyt.in/" target="_blank">invyt</a><br/><br> To make your own <a href="https://www.invyt.in">invyt</a>, click <a href="https://www.invyt.in/signup.html">here</a><br> For a custom invyt, <a href="https://api.whatsapp.com/send?phone=+917907283945&text=Hi, I am contacting you from your website." class="social-icon whatsapp"><i class="fa fa-whatsapp"></i></a>or <a href="tel:09495971412">+919495971412</a></div>
+                <div class="column small-12 large-3">
+                  <!--  <a href="#" target="_blank"><i class="fa fa-instagram"></i></a>
+                  <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                  <a href="#" target="_blank"><i class="fa fa-twitter-square"></i></a>
+                  <a href="#" target="_blank"><i class="fa fa-vimeo"></i></a>
+                  <a href="#" target="_blank"><i class="fa fa-tumblr"></i></a>-->
+                
+                </div>
+              </div>
+          </div>
+        </footer><!-- end footer -->
+      </div><!-- END div off-canvas main content -->
+    </div><!-- END div off-canvas wrapper -->
+    
+    <!--js files-->
+    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="scripts/vendor/what-input.js"></script>
+    <script type="text/javascript" src="scripts/vendor/foundation.js"></script>
+    <script type="text/javascript" src="scripts/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.countdown.min.js"></script>
+    <script type="text/javascript" src="scripts/lightbox.min.js"></script>
+    <script type="text/javascript" src="scripts/skrollr.min.js"></script>
+    <script type="text/javascript" src="scripts/shuffle.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4tXuwb48eW-1L69vx61x9fvEeJ5geFy0&callback=initMap"></script>
+    <script type="text/javascript" src="scripts/app.js"></script>
+  </body>
+</html>

@@ -96,7 +96,7 @@ function myFunction() {
         <div class="features-content-container features-content-container-left web-stories">
             <img src="img/postedtext.png">
             <div class="features-content">
-            <h1 class="row__title">Your wish is successfully submitted for review!</h1><br><br>
+            <h1 class="row__title">Thank you for the lovely wishes. <br/> <br/>Your wish has successfully submitted for review! Please come back and check the invyt in a while.</h1><br><br>
             <center>
             <div class="site__box-link">
                 <a class="btn btn--purple btn--width" href="index.php">Take a tour</a>

@@ -1,7 +1,7 @@
 <?php
 include 'config.php';
-include 'config.php';
-$con = mysqli_connect($host, $user, $password,$dbname);
+
+$con = mysqli_connect($host,$user,$password,$dbname);
 
 
 
@@ -14,25 +14,44 @@ $br='';
 $r='';
 function getKeys($fname) {
    global $a,$con,$gr,$br,$r;
+   include 'config.php';
+    $con = mysqli_connect($host,$user,$password,$dbname);
    
    $s=explode("weds",$fname);
-  // echo  $s[0] . "<br>";
+ // echo  $s[0] . "<br>";
    $gr=$s[0];
    $s2=$s[1]; 
    $s3=explode("_",$s2);
    $br=$s3[0];
- //  echo  $br . "<br>";
+//   echo  $br . "<br>";
    $s2=$s3[1]; 
    $s3=explode(".",$s2);
    $r=$s3[0];
-  // echo  $r . "<br>";
-
+$br2x=explode(".",$br);
+$br2=$br2x[0];
+ // echo  $r . "<br>";
+if(!is_numeric($r)){
+    
+    $r=121;
+    $sql="SELECT w_id,c_id,bride_name,groom_name,w_date,w_place,w_phno_1,rand_no FROM `invyt_form_org` WHERE groom_name='".$gr."' and bride_name='".$br2."' and rand_no=".$r;
+}
+else{
 $sql="SELECT w_id,c_id,bride_name,groom_name,w_date,w_place,w_phno_1,rand_no FROM `invyt_form_org` WHERE groom_name='".$gr."' and bride_name='".$br."' and rand_no=".$r;
+}
+//echo $sql. "<br>";
 $det = mysqli_query($con,$sql);
+ if (mysqli_query($con, $sql)) {
+     
+ }
+ else{
+  // echo "Error: " . $sql . "<br>" . mysqli_error($con);  
+ }
 $row = mysqli_fetch_array($det);
 //print_r($row);
+//echo "<br>";
 array_push($a,$row);
-
+//print_r($a);
+//echo "<br>";
 mysqli_close($con);
 }
 
@@ -52,8 +71,9 @@ if (is_dir($dir)){
             if(strpos($file,"signup")!==false){
                 continue;
             }
-           // echo  $file . "<br>";
+          
             $cnt=$cnt+1;
+              echo $cnt.". ".$file . "<br>";
             getKeys($file);
            
         }
@@ -96,7 +116,7 @@ if (is_dir($dir)){
 						    <td>".$v["w_place"]."</td>
 						    <td>".$v["w_phno_1"]."</td>
 						    <td>".$v["c_id"]."</td>
-						    <td><a class='btn btn--revert btn--width' href='http://invyt.esy.es/".$v["groom_name"]."weds". $v["bride_name"]."_".$v["rand_no"].".html' target='_blank'>Visit Invyt</a></td>
+						    <td><a class='btn btn--revert btn--width' href='https://invyt.in/".$v["groom_name"]."weds". $v["bride_name"]."_".$v["rand_no"].".html' target='_blank'>Visit Invyt</a></td>
 						    <td><a class='btn btn--purple btn--width' href='del2.php?row_id=".$v["w_id"]."' onclick='return confirm(";echo '"Are you sure?")';echo "'>Delete</a></td>
 						    
 						    

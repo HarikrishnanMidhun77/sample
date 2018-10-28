@@ -89,7 +89,7 @@
             <br>
             <div class="features-content">
               <h1 class="row__title">Payment Details</h1>
-              <h1 class="row__title" style="font-size: 40px;">Pay Rs.799 Here!</h1><br><br><br>
+              <h1 class="row__title" style="font-size: 40px;">Pay Rs.999 Here!</h1><br><br><br>
               
              <!-- <form action="payreq.php" method="post">
               <div class="form-group">

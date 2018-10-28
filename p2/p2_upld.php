@@ -1,5 +1,4 @@
 <?php
-
 include '../config.php';
 $con = mysqli_connect($host, $user, $password,$dbname);
 
@@ -86,10 +85,7 @@ if(isset($_FILES["file"]))
 if($filename==''){
     $filename=$_POST["old_image"];
 }
-/*$filename = str_replace(" ", "-", $filename);
-$filename = str_replace("(", "-", $filename);
-$filename = str_replace(")", "-", $filename);
-$filename = str_replace("_", "-", $filename);*/
+
 $bd=$_POST["b_det"];
 $gd=$_POST["g_det"];
 $bd=str_replace("'","",$bd);
@@ -97,8 +93,6 @@ $gd=str_replace("'","",$gd);
 
 $filename2 = str_replace(" ", "-", $filename);
 rename("uploads/".$filename, "uploads/".$filename2) ;
-
-
 
 $filename=utf8_encode($filename);
 $sql = "INSERT INTO invyt_form (c_id,main_pic_path,w_date,bride_name,groom_name,b_det,g_det,muhoo_1,muhoo_2,w_place,w_venue,w_phno_1,w_email,rand_no,cr_date,r_place,r_date,r_t1,r_t2,w_plan)
@@ -122,7 +116,7 @@ if (!$con) {
    // VALUES ('$filename'+',')";
     
     if (mysqli_query($con, $sql)) {
-       // echo "New record created successfully";
+        echo "New record created successfully";
         //$uname=$_SESSION['login_user'];
         $sql5="SELECT max(w_id) as mwid FROM `invyt_form`";
       
@@ -135,13 +129,9 @@ if (!$con) {
         exit;
 
     } else {
-       // echo "Error: " . $sql . "<br>" . mysqli_error($con);
+        echo "Error: " . $sql . "<br>" . mysqli_error($con);
     }
 //}
     mysqli_close($con);
    }   
-
-
-
-
 ?>

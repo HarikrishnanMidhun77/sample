@@ -1,6 +1,7 @@
 <?php
 
 include 'config.php';
+header("Access-Control-Allow-Origin: *");
 $con = mysqli_connect($host, $user, $password,$dbname);
 $wid = $_POST['wid'];
 $sql3="SELECT w_cnt FROM `invyt_form_org` WHERE w_id= ".$wid;
